@@ -1,6 +1,7 @@
 package com.Biblioteca.prestamos.Controlador;
 
 import com.Biblioteca.prestamos.Entidades.Libro;
+import com.Biblioteca.prestamos.Entidades.Usuario;
 import com.Biblioteca.prestamos.Servicios.libroServicio;
 import com.Biblioteca.prestamos.Servicios.usuarioServicio;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,7 +31,7 @@ public class vistaLibroControlador {
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if(principal !=null){
-        Usuario user=usuServicio.existeUsuario(principal.getClaims())
+        Usuario user=usuServicio.existeUsuario(principal.getClaims());
         }
         //System.out.println(principal.getClaims());}
         return "index";

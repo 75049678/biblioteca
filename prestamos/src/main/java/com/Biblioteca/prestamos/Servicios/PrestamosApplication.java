@@ -1,4 +1,4 @@
-package com.Biblioteca.prestamos.Entidades;
+package com.Biblioteca.prestamos.Servicios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

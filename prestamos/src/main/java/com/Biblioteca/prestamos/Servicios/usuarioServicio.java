@@ -1,73 +1,41 @@
 package com.Biblioteca.prestamos.Servicios;
 
-import javax.persistence.*;
+import com.Biblioteca.prestamos.Entidades.Usuario;
+import com.Biblioteca.prestamos.Repositorio.usuarioRepositorio;
+import org.springframework.stereotype.Service;
 
-@Entity
-@Table
+import java.util.Map;
+
+@Service
 public class usuarioServicio {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private usuarioRepositorio repositorio;
 
-    @Column(unique = true)
-    private String email;
-
-    @Column(unique = true)
-    private String nick;
-
-    @Column(unique = true)
-    private String img;
-
-    @Column(unique = true)
-    private String auth_id;
-
-    public usuarioServicio(String email, String nick, String img, String auth_id) {
-        this.id = id;
-        this.email = email;
-        this.nick = nick;
-        this.img = img;
-        this.auth_id = auth_id;
+    public usuarioServicio(usuarioRepositorio repositorio) {
+        this.repositorio = repositorio;
     }
 
-    public long getId() {
-        return id;
+    public Usuario agregarUsuario(Usuario usuario){
+        return repositorio.save(usuario);
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Usuario buscarEmail(String email){
+        return repositorio.findByEmail(email);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getAuth_id() {
-        return auth_id;
-    }
-
-    public void setAuth_id(String auth_id) {
-        this.auth_id = auth_id;
+    public Usuario existeUsuario(Map<String,Object> datos){
+        Usuario user=buscarEmail((String) datos.get("email"));
+        if(user==null){
+            String name= (String) datos.get("nickname");
+            String imag= (String) datos.get("picture");
+            String authId= (String) datos.get("sub");
+            String correo= (String) datos.get("email");
+            Usuario usuario=new Usuario(correo,name,imag,authId);
+            user=agregarUsuario(usuario);
+            return user;
+        }else{
+            return user;
+        }
     }
 }
 
