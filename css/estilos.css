@@ -1,0 +1,70 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+pre,
+code,
+address,
+form,
+fieldset,
+blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+* {
+    color: brown;
+}
+
+h1 {
+    color: aliceblue;
+    /*width: 50%;*/
+    height: 100px;
+    /*margin-top: 20px;*/
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+#deportes {
+    color: blue;
+}
+
+p.noticia {
+    background-color: aquamarine;
+}
+
+p {
+    color: black;
+}
+
+nav {
+    background-color: blueviolet;
+    padding: 20px;
+}
+
+ul {
+    background-color: blue;
+    color: azure;
+    margin: 20px;
+    width: 30%;
+}
+
+li {
+    background-color: rgb(0, 255, 34);
+    color: azure;
+    margin: 20px;
+    width: 30%;
+}
