@@ -8,11 +8,12 @@
 </head>
 <body>
 <div class="container col-4 aling-center mt-5">
-    <h2 class="display-4 text-success text-center mb-5">Registrar Libro</h2>
-    <form  th:action="@{/RegistrarLibro}" th:object="${libro}" method="post">
+    <h2 class="display-4 text-success text-center mb-5">Actualizar Libro</h2>
+    <form  th:action="@{/guardarEditado/{isbn}(isbn=${libro.isbn})}" th:object="${libro}" method="post">
         <div class="mb-3">
             <label for="isbn" class="form-label">Codigo Isbn del Libro</label>
             <input type="text" class="form-control" id="isbn" aria-describedby="emailHelp" placeholder="Isbn01" th:field="*{isbn}" required pattern="[Isbn0-9]+" minlength="6" maxlength="8">
+            <input type="text" class="form-control" id="isbn" aria-describedby="emailHelp" placeholder="Isbn01" th:field="*{isbn}" disabled>
         </div>
         <div class="mb-3">
             <label for="titulo" class="form-label">Titulo</label>
@@ -25,7 +26,7 @@
         <div class="mb-3">
             <label for="editorial" class="form-label">Editorial</label>
             <select class="form-select" id="editorial" th:field="*{editorial}" aria-label="Default select example">
-                <option value="Sin Editorial" selected>Seleccionar</option>
+                <option th:value="${libro.editorial}" th:text="${libro.editorial}" selected></option>
                 <option value="Norma">Norma</option>
                 <option value="Planeta">Planeta</option>
                 <option value="Otra">Otra</option>
@@ -36,11 +37,8 @@
             <input type="number" class="form-control" id="pag" th:field="*{no_page}" min="0" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">Antes de enviar, ingrese todos los datos.</div>
         </div>
-
         <button type="submit" class="btn btn-primary">Registrar Libro</button>
     </form>
-
 </div>
-
 </body>
 </html>
